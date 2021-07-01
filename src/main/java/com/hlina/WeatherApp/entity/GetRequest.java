@@ -14,6 +14,7 @@ import com.google.gson.reflect.*;
 
 public class GetRequest {
 
+
     public static Map<String, Object> jsonToMap(String str) {
         Map<String, Object> map = new Gson().fromJson(
                 str, new TypeToken<HashMap<String, Object>>() {
@@ -39,12 +40,11 @@ public class GetRequest {
                 result.append(line);
             }
             rd.close();
-            //System.out.println(result);
+            System.out.println(result); //вывод результата запроса
             Map<String, Object> respMap = jsonToMap(result.toString());
             Map<String, Object> sysMap = jsonToMap(respMap.get("sys").toString());
             Map<String, Object> mainMap = jsonToMap(respMap.get("main").toString());
             Map<String, Object> windMap = jsonToMap(respMap.get("wind").toString());
-
             System.out.println("---------------");
             System.out.println("Страна: " + sysMap.get("country") + ", Город: " + respMap.get("name"));
             System.out.println("Текущая Температура: " + mainMap.get("temp") + " градусов по цельсию "

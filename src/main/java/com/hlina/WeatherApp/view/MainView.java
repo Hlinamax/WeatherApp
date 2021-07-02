@@ -1,9 +1,7 @@
 package com.hlina.WeatherApp.view;
 
-import com.hlina.WeatherApp.entity.GetDB;
 import com.hlina.WeatherApp.entity.GetRequest;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MainView {

@@ -3,11 +3,15 @@ package com.hlina.WeatherApp.entity;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import com.hlina.WeatherApp.repository.WeatherRepository;
 
 import com.google.gson.*;     //Java library in Maven
 import com.google.gson.reflect.*;
@@ -53,6 +57,26 @@ public class GetRequest {
             System.out.println("Текущая Влажность: " + mainMap.get("humidity") + "%");
             System.out.println("Скорость Ветра: " + windMap.get("speed") + " метров в секунду");
             System.out.println("Угол Ветра: " + windMap.get("deg") + " градусов");
+
+            //Заполнение в БД
+            String urlDB = "http://localhost:8080/rest/weather/load";
+            String fill = "{\"idCity\":" + respMap.get("id") + ",\"city\":\"" + respMap.get("name") + "\",\"country\":\""+ sysMap.get("country") +"\",\"tempNow\":" + mainMap.get("temp") + ",\"tempMax\":"+ mainMap.get("temp_max") +",\"tempMin\":"+ mainMap.get("temp_min") +",\"humidity\":"+ mainMap.get("humidity") +",\"speed\":"+ windMap.get("speed") +",\"deg\":"+ windMap.get("deg") +"}";
+
+            URL urls = new URL(urlDB);
+            URLConnection con = urls.openConnection();
+            HttpURLConnection http = (HttpURLConnection)con;
+            http.setRequestMethod("POST");
+            http.setDoOutput(true);
+
+            byte[] out = fill .getBytes(StandardCharsets.UTF_8);
+            int length = out.length;
+
+            http.setFixedLengthStreamingMode(length);
+            http.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            http.connect();
+            try(OutputStream os = http.getOutputStream()) {
+                os.write(out);
+            }
 
         } catch (IOException e) {
             System.out.println(e.getMessage());

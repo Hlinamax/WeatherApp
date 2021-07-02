@@ -23,13 +23,13 @@ public class GetRequest {
         return map;
     }
     public static void run() {
-    //public static void main(String[] args) {
         String API_KEY = "b18c7414745435f032ff5bba3b78efa1";
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите название города: ");
         String LOCATION = scanner.nextLine();
         String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + LOCATION + "&appid=" + API_KEY +
                 "&units=metric";
+        //System.out.println(urlString);
         try {
             StringBuilder result = new StringBuilder();
             URL url = new URL(urlString);
@@ -46,6 +46,7 @@ public class GetRequest {
             Map<String, Object> mainMap = jsonToMap(respMap.get("main").toString());
             Map<String, Object> windMap = jsonToMap(respMap.get("wind").toString());
             System.out.println("---------------");
+            //System.out.println("ID: " + respMap.get("id"));
             System.out.println("Страна: " + sysMap.get("country") + ", Город: " + respMap.get("name"));
             System.out.println("Текущая Температура: " + mainMap.get("temp") + " градусов по цельсию "
                     + "(макс t: " + mainMap.get("temp_max") + ", мин t: " + mainMap.get("temp_min") + ")");

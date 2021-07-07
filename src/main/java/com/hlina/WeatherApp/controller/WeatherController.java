@@ -1,9 +1,8 @@
-package com.hlina.WeatherApp.resource;
+package com.hlina.WeatherApp.controller;
 
 import com.hlina.WeatherApp.entity.Weather;
 import com.hlina.WeatherApp.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/rest/weather")
-public class WeatherResource {
+public class WeatherController {
 
     @Autowired
     WeatherRepository weatherRepository;
@@ -23,7 +22,7 @@ public class WeatherResource {
         return weatherRepository.findAll();
     }
 
-    @PostMapping(value = "/load")
+    @PostMapping(value = "/load")   //save method
     public List<Weather> persist(@RequestBody final Weather weather) {
         weatherRepository.save(weather);
         return weatherRepository.findAll();
@@ -34,7 +33,7 @@ public class WeatherResource {
         return weatherRepository.findById(id);
     }
 
-    @RequestMapping(value = "/{city}")
+    @RequestMapping(value = "/{city}")     //find city by name
     public List<Weather> findByCity(@PathVariable("city") String city) {
         return weatherRepository.findByCity(city);
     }

@@ -1,0 +1,14 @@
+<html>
+<body>
+    <div>
+        <form method="post">
+            <input type="text" name="text" placeholder="Введите город" />
+            <button type="submit">Поиск</button>
+        </form>
+    </div>
+    <div>Информация о погоде</div>
+    {{#messages}}
+        <b>{{name}}</b>
+        {{/messages}}
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.hlina.WeatherApp.view;
 
-import com.hlina.WeatherApp.entity.GetRequest;
+import com.hlina.WeatherApp.controller.GetRequest;
 
 import java.util.Scanner;
 
@@ -22,8 +22,7 @@ public class MainView {
             System.out.println("\nВыберите опцию для операции: ");
             System.out.println("Введите число : ");
             System.out.println("1. Текущая информация о погоде");
-            System.out.println("2. Информация о погоде из Базы Данных");
-            System.out.println("3. Выход");
+            System.out.println("2. Выход");
 
             int number = scanner.nextInt();
             switch (number) {
@@ -31,22 +30,16 @@ public class MainView {
                     runToday();
                     break;
                 case 2:
-                    runDB();
-                    break;
-                case 3:
                     go = false;
                     break;
                     default:
                     System.out.println("Не верное число");
-                    System.out.println("Введите числа от 1 до 3, пожалуйста");
+                    System.out.println("Введите числа от 1 до 2, пожалуйста");
             }
         }
     }
     //private void runDB(){GetDB.run();}
     private void runToday() {
         GetRequest.run();
-    }
-    private void runDB() {
-        GetDB.run();
     }
 }

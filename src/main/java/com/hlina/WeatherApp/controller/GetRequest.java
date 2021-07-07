@@ -1,4 +1,4 @@
-package com.hlina.WeatherApp.entity;
+package com.hlina.WeatherApp.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import com.hlina.WeatherApp.repository.WeatherRepository;
 
 import com.google.gson.*;     //Java library in Maven
 import com.google.gson.reflect.*;
@@ -33,7 +32,6 @@ public class GetRequest {
         String LOCATION = scanner.nextLine();
         String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + LOCATION + "&appid=" + API_KEY +
                 "&units=metric";
-        //System.out.println(urlString);
         try {
             StringBuilder result = new StringBuilder();
             URL url = new URL(urlString);

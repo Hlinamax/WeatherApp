@@ -1,5 +1,7 @@
 spring:
   datasource:
+    token: b18c7414745435f032ff5bba3b78efa1
+    apiurl: http://api.openweathermap.org/data/2.5/weather?q=
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/weather
     username: root

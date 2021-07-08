@@ -1,14 +1,42 @@
 <html>
+
 <body>
     <div>
-        <form method="post">
-            <input type="text" name="text" placeholder="Введите город" />
+        <div>Информация о погоде</div>
+        <form method="post" action="filter">
+            <input type="text" name="filter" placeholder="Введите название города" />
             <button type="submit">Поиск</button>
         </form>
-    </div>
-    <div>Информация о погоде</div>
-    {{#messages}}
-        <b>{{name}}</b>
+        {{#messages}}
+            <div>
+                <p></p>
+                <!--  <b>{{idCity}}</b> -->
+                <span>Текущий город:</span>
+                <span>{{city}},</span>
+                <j>{{country}}</j>
+                <div>
+                    <span>Текущая температура:</span>
+                    <span>{{tempNow}} &deg;С</span>
+                </div>
+                <div>
+                    <span>Максимальная температура:</span>
+                <span>{{tempMax}} &deg;С</span>
+                </div>
+                <div><span>Минимальная температура:</span>
+                <span>{{tempMin}} &deg;С</span>
+                </div>
+                    <div><span>Влажность:</span>
+                <span>{{humidity}}%</span>
+                    </div>
+                <div><span>Скороть ветра:</span>
+                <span>{{speed}} м/с</span>
+                </div>
+                <div><span>Угол ветра:</span>
+                <span>&ang;{{deg}}</span>
+                </div>
+                <p></p>
+            </div>
         {{/messages}}
+    </div>
 </body>
 </html>

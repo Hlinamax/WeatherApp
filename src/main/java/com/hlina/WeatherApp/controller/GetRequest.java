@@ -58,8 +58,7 @@ public class GetRequest {
 
             //Заполнение в БД
             String urlDB = "http://localhost:8080/rest/weather/load";
-            String fill = "{\"idCity\":" + respMap.get("id") + ",\"city\":\"" + respMap.get("name") + "\",\"country\":\""+ sysMap.get("country") +"\",\"tempNow\":" + mainMap.get("temp") + ",\"tempMax\":"+ mainMap.get("temp_max") +",\"tempMin\":"+ mainMap.get("temp_min") +",\"humidity\":"+ mainMap.get("humidity") +",\"speed\":"+ windMap.get("speed") +",\"deg\":"+ windMap.get("deg") +"}";
-
+            String fill = "{\"id\":" + respMap.get("id") + ",\"idCity\":" + respMap.get("id") + ",\"city\":\"" + respMap.get("name") + "\",\"country\":\""+ sysMap.get("country") +"\",\"tempNow\":" + mainMap.get("temp") + ",\"tempMax\":"+ mainMap.get("temp_max") +",\"tempMin\":"+ mainMap.get("temp_min") +",\"humidity\":"+ mainMap.get("humidity") +",\"speed\":"+ windMap.get("speed") +",\"deg\":"+ windMap.get("deg") +"}";
             URL urls = new URL(urlDB);
             URLConnection con = urls.openConnection();
             HttpURLConnection http = (HttpURLConnection)con;

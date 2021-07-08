@@ -9,6 +9,8 @@ public class Weather {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
+    private Long id;
     @Column(name = "id_city")
     private Long idCity;
     @Column(name = "city")
@@ -28,11 +30,15 @@ public class Weather {
     @Column(name = "deg")
     private BigDecimal deg;
 
+    public Long getId() {
+        return id;
+    }
+
     public Long getIdCity() {
         return idCity;
     }
 
-    public void setIdCity(Long idCity) {
+    public void setIdCity(Long idCity)  {
         this.idCity = idCity;
     }
 

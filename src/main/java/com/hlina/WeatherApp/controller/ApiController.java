@@ -17,7 +17,7 @@ public class ApiController {
 
     RestTemplate restTemplate;
 
-    @RequestMapping(value = "/hello/")
+    @RequestMapping(value = "/hello/")     //test
     public String restTemplate() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
